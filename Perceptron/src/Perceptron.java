@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Perceptron {
     ArrayList<Double> inputVec;
     ArrayList<Double> weights;
-    int bias;
+    double bias;
     double learningRate;
     double expectedOutput;
 
@@ -21,12 +21,12 @@ public class Perceptron {
         return result;
     }
 
-    public int output(ArrayList<Double> inputVec, ArrayList<Double> weights, int bias){
+    public int output(ArrayList<Double> inputVec, ArrayList<Double> weights, double bias){
         int sum = 0;
         for (int i = 0; i < inputVec.size(); i++){
             sum += inputVec.get(i)*weights.get(i);
         }
-        int net = sum - bias;
+        double net = sum - bias;
         return netVal(net);
     }
 
@@ -35,8 +35,7 @@ public class Perceptron {
         for(int i = 0; i < weights.size(); i++){
             weights.set(i, weights.get(i) + xVector.get(i) * constant);
         }
-        return weights;
         bias = bias - constant;
-
+        return weights;
     }
 }
